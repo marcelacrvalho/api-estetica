@@ -1,0 +1,43 @@
+scalar GraphQLDate
+
+type Course {
+    id: Int
+    title: String
+    description: String
+    date: GraphQLDate
+    price: String
+    author: String
+    city: String
+    image: String
+}
+
+input CourseInput {
+    title: String
+    description: String
+    date: GraphQLDate
+    price: String
+    author: String
+    city: String
+    image: String
+}
+
+input CourseFilter {
+    id: Int
+    title: String
+    date: GraphQLDate
+    author: String
+    city: String   
+}
+
+ type Query {
+    courses: [Course]
+    coursesByCity(filter: CourseFilter): [Course]
+    coursesByAuthor(filter: CourseFilter): [Course]
+    course(filter: CourseFilter): Course
+}
+
+type Mutation {
+    createCourse(data: CourseInput) : Course
+    updateCourse(id: Int!, data: CourseInput) : Course,
+    deleteCourse(filter: CourseFilter!) : Boolean!
+}

@@ -1,0 +1,25 @@
+type Hour {
+    id: Int
+    hour: String
+}
+
+input HourInput {
+   hour: String
+}
+
+input HourFilter {
+    id: Int
+    date: String
+    store: Int
+}
+
+ type Query {
+    hours(filter: HourFilter): [Hour]
+    hour(filter: HourFilter): Hour
+}
+
+type Mutation {
+    createHour(data: HourInput) : Hour
+    updateHour(id: Int!, data: HourInput) : Hour,
+    deleteHour(filter: HourFilter!) : Boolean!
+}

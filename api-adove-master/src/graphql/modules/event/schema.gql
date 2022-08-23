@@ -1,0 +1,36 @@
+scalar GraphQLDate
+
+type Event {
+    id: Int
+    user: User
+    store: Store
+    job: Job
+    date: GraphQLDate
+    hour: Hour
+}
+
+input EventInput {
+    user: Int
+    store: Int
+    job: Int
+    date: GraphQLDate
+    hour: Int
+}
+
+input EventFilter {
+    id: Int
+    user: Int
+    store: Int
+    date: GraphQLDate
+}
+
+ type Query {
+    events(filter: EventFilter): [Event]
+    event(filter: EventFilter): Event
+}
+
+type Mutation {
+    createEvent(data: EventInput) : Event
+    updateEvent(id: Int!, data: EventInput) : Event,
+    deleteEvent(filter: EventFilter!) : Boolean!
+}

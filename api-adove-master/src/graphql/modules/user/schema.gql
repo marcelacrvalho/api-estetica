@@ -1,0 +1,45 @@
+type User {
+    id: Int
+    name: String
+    email: String
+    password: String
+    location: String
+    neighborhood: String
+    street: String
+    number: String
+    firebaseToken: String
+}
+
+input UserInput {
+    id: Int
+    name: String
+    email: String
+    password: String
+    location: String
+    neighborhood: String
+    street: String
+    number: String
+    firebaseToken: String
+}
+
+input UserLoginInput {
+    email: String
+    password: String
+}
+
+input UserFilter {
+    id: Int
+    email: String
+}
+
+ type Query {
+    users: [User]
+    user(filter: UserFilter): User
+}
+
+type Mutation {
+    createUser(data: UserInput) : User
+    loginUser(data: UserLoginInput) : User
+    updateUser(id: Int!, data: UserInput) : User
+    deleteUser(filter: UserFilter!) : Boolean!
+}

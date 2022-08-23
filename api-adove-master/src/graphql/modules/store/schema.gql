@@ -1,0 +1,56 @@
+type Store {
+    id: Int
+    name: String
+    email: String
+    password: String
+    open: String
+    payment: String
+    active: Boolean
+    category: String
+    homecare: Boolean
+    location: String
+    neighborhood: String
+    street: String
+    number: String
+    firebaseToken: String
+}
+
+input StoreInput {
+    id: Int
+    name: String
+    email: String
+    password: String
+    open: String
+    payment: String
+    active: Boolean
+    category: String
+    homecare: Boolean
+    location: String
+    neighborhood: String
+    street: String
+    number: String
+    firebaseToken: String
+}
+
+input StoreLoginInput {
+    email: String
+    password: String
+}
+
+input StoreFilter {
+    id: Int
+    email: String
+    firebaseToken: String
+}
+
+ type Query {
+    stores: [Store]
+    store(filter: StoreFilter): Store
+}
+ 
+type Mutation {
+    createStore(data: StoreInput) : Store
+    loginStore(data: StoreLoginInput) : Store
+    updateStore(id: Int!, data: StoreInput) : Store,
+    deleteStore(filter: StoreFilter!) : Boolean!
+}

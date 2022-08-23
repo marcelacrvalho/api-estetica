@@ -1,0 +1,32 @@
+scalar Date
+
+type Publication {
+    id: Int
+    title: String
+    text: String
+    image: String
+    date: Date
+}
+
+input PublicationInput {
+    title: String
+    text: String
+    image: String
+    date: Date
+}
+
+input PublicationFilter {
+    id: Int
+    title: String
+}
+
+ type Query {
+    publications: [Publication]
+    publication(filter: PublicationFilter): Publication
+}
+
+type Mutation {
+    createPublication(data: PublicationInput) : Publication
+    updatePublication(id: Int!, data: PublicationInput) : Publication,
+    deletePublication(filter: PublicationFilter!) : Boolean!
+}

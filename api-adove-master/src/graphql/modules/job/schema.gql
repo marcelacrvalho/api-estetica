@@ -1,0 +1,39 @@
+type Job {
+    id: Int
+    job: String
+    price: String
+    description: String
+    store: Store
+    discount: Boolean
+}
+
+input JobInput {
+    job: String
+    price: String
+    description: String
+    store: Int
+    discount: Boolean
+}
+
+input JobFilter {
+    id: Int
+    job: String
+    store: Int
+    location: String
+    category: String
+    discount: Boolean
+}
+
+ type Query {
+    jobsSearch(filter: JobFilter): [Job]
+    jobsByStore(filter: JobFilter): [Job]
+    jobsByLocation(filter: JobFilter): [Job]
+    jobsByLocationAndDiscount(filter: JobFilter): [Job]
+    job(filter: JobFilter): Job
+}
+
+type Mutation {
+    createJob(data: JobInput) : Job
+    updateJob(id: Int!, data: JobInput) : Job,
+    deleteJob(filter: JobFilter!) : Boolean!
+}
